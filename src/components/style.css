@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .left-panel {
+    width: 40%;
+    padding: 20px;
+    background-color: #f2f2f2;
+  }
+  
+  .projects {
+    margin-top: 20px;
+  }
+  
+  .project-item {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .right-panel {
+    width: 50%;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .task-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .task-list li {
+    margin-bottom: 10px;
+  }
+  
