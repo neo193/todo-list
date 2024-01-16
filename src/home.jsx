@@ -1,5 +1,5 @@
 import React from 'react';
-import './components/style.css';
+import './style.css';
 
 function Home() {
   return (
@@ -10,7 +10,7 @@ function Home() {
           <p>Welcome back to the workspace, we missed You!</p>
         </div>
         <div className="projects">
-          <h3>Projects (13)</h3>
+          <h3>Projects (3)</h3>
           <div className="project-item" style={{backgroundColor: "#7FFF00"}}>
             <p>Green House</p>
           </div>
