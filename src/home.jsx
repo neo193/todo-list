@@ -20,7 +20,7 @@ function Home() {
           <div className="project-item" style={{backgroundColor: "#FFC0CB"}}>
             <p>Easy Crypto</p>
           </div>
-          {/* Add more project items here */}
+          
         </div>
       </div>
       <div className="right-panel">
@@ -29,7 +29,7 @@ function Home() {
           <li><input type="checkbox" /><span>Create initial layout for homepage</span></li>
           <li><input type="checkbox" /><span>Fixing logo with transparent background</span></li>
           <li><input type="checkbox" /><span>Creation initial style guide</span></li>
-          {/* Add more task items here */}
+         
         </ul>
       </div>
     </div>
