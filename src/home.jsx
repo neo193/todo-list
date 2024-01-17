@@ -7,7 +7,7 @@ function Home() {
       <div className="left-panel">
         <div className="greeting">
           <h2>Hi ALEX</h2>
-          <p>Welcome back to the world, we never missed You!</p>
+          <p>Welcome back to the world, we  missed You!</p>
         </div>
         <div className="projects">
           <h3>Projects (3)</h3>
