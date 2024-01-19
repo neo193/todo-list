@@ -1,8 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-import Home from './home.jsx'
+import Home from "./home.jsx";
 
-ReactDOM.createRoot( 
-  document.querySelector('#root')
-).render(<Home />)
+ReactDOM.createRoot(document.querySelector("#root")).render(<Home />);
