@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from "../src/utils/modal.jsx"
 import './style.css';
 
 function Home() {
@@ -7,6 +8,7 @@ function Home() {
       <div className="left-panel">
         <div className="greeting">
           <h2>Hi ALEX</h2>
+          <Modal/> 
           <p>Welcome back to the world, we  missed You!</p>
         </div>
         <div className="projects">
@@ -32,6 +34,7 @@ function Home() {
          
         </ul>
       </div>
+
     </div>
   );
 }
