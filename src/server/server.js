@@ -1,5 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const { ObjectId } = mongoose.Types;
 const tasks = require("../server/mongo")
 const users = require("../server/loginSchema")
 const bodyparser = require("body-parser")
@@ -52,7 +53,7 @@ app.post('/login', async (req, res) => {
         if (user) {
             console.log("User is present");
             if (user.password === password) {
-                const user_id = user._id.toString();
+                user_id = user._id.toString();
                 console.log('User ID: ', user_id);
                 res.status(200).json({ message: 'Login successful', user_id });
             }
@@ -72,10 +73,25 @@ app.post('/login', async (req, res) => {
 app.get('/getUid', (req, res) => {
     res.send(user_id)
 })
-app.post('/new', (req, res) => {
-    const data = JSON.stringify(req.body)
-    console.log(data)
+app.post('/new', async (req, res) => {
+    try {
+        const { userId, taskName, taskDate, completed } = req.body.data;
 
+        const newTask = new tasks({
+            userId: new ObjectId(userId),
+            taskName,
+            taskDate: new Date(Number(taskDate)),
+            completed: completed.toLowerCase() === 'true',
+        });
+
+        await newTask.save();
+
+        console.log('Task created:', newTask);
+        res.status(201).json({ message: 'Task created successfully', task: newTask });
+    } catch (error) {
+        console.error('Error creating task:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 app.put('/completed/:id', (req, res) => {
