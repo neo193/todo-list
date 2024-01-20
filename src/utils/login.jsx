@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,20 +18,32 @@ const Login = () => {
     }
   }
   async function handleLogin() {
-    navigate("/home")
+    navigate("/home");
     const userData = {
       username: username,
       password: password,
     };
     try {
-     await axios.post("http://localhost:3002/login", {
+      const response = await axios.post("http://localhost:3002/login", {
         userData,
-      })
-      
+      });
+      const { message, user_id } = response.data;
+
+      console.log("Response:", message);
+      console.log("User ID:", user_id);
     } catch (err) {
-      console.log(err);
+      if (err.response) {
+        console.log(
+          "Server responded with error data:",
+          err.response.data.error
+        );
+        console.log("Status code:", err.response.status);
+      } else if (err.request) {
+        console.log("No response received:", err.request);
+      } else {
+        console.log("Error during request setup:", err.message);
+      }
     }
-    
   }
 
   return (

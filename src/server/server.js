@@ -64,7 +64,7 @@ app.post('/login', async (req, res) => {
         } else {
             console.log("User not found. Please register.");
             res.status(404).json({ error: 'User not found. Please register.' });
-           
+
         }
     } catch (error) {
         console.error('Error during login:', error);
@@ -89,23 +89,53 @@ app.post('/new', async (req, res) => {
 
         console.log('Task created:', newTask);
         res.status(201).json({ message: 'Task created successfully', task: newTask });
-    
+
     } catch (error) {
         console.error('Error creating task:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
-app.put('/completed/:id', (req, res) => {
-    var id = req.params
-    var val = req.body
-    console.log(id, val)
-})
+app.put('/completed/:id', async (req, res) => {
+    try {
+        const taskId = req.params.id;
 
-app.delete('/delete/:id', (req, res) => {
-    var id = req.params
-    console.log(id)
-})
+        const task = await tasks.findById(taskId);
+
+        if (!task) {
+            return res.status(404).json({ error: 'Task not found' });
+        }
+
+        task.completed = !task.completed;
+
+        await task.save();
+
+        console.log('Task completion toggled:', task);
+        res.status(200).json({ message: 'Task completion toggled successfully', task });
+    } catch (error) {
+        console.error('Error toggling task completion:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+app.delete('/delete/:id', async (req, res) => {
+    try {
+        const taskId = req.params.id;
+
+        const result = await tasks.deleteOne({ _id: taskId });
+
+        if (result.deletedCount === 1) {
+            console.log('Task deleted successfully:', taskId);
+            res.status(200).json({ message: 'Task deleted successfully' });
+        } else {
+            console.log('Task not found for deletion:', taskId);
+            res.status(404).json({ error: 'Task not found for deletion' });
+        }
+    } catch (error) {
+        console.error('Error deleting task:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 
 app.listen(3002, () => {
