@@ -18,7 +18,6 @@ const Login = () => {
     }
   }
   async function handleLogin() {
-    navigate("/home");
     const userData = {
       username: username,
       password: password,
@@ -27,6 +26,10 @@ const Login = () => {
       const response = await axios.post("http://localhost:3002/login", {
         userData,
       });
+
+      if(response.status===200){
+        navigate("/home");
+      }
       const { message, user_id } = response.data;
 
       console.log("Response:", message);
@@ -70,7 +73,10 @@ const Login = () => {
       />
       <br />
       <button onClick={handleRegister}>REGISTER</button>
-      <button onClick={handleLogin}>LOGIN</button>
+      <button onClick={(e)=>{
+        e.preventDefault()
+        handleLogin()
+        }}>LOGIN</button>
     </form>
   );
 };
