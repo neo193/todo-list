@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   async function handleRegister() {
     const userData = {
       username: username,
@@ -12,25 +14,27 @@ const Login = () => {
     };
     try {
       await axios.post("http://localhost:3002/register", { userData });
-      
     } catch (err) {
       console.log(err);
     }
   }
   async function handleLogin() {
-    window.location.href="/home"
+    navigate("/home")
     const userData = {
       username: username,
       password: password,
     };
     try {
-      await axios.post("http://localhost:3002/login", { userData });
-      
+     await axios.post("http://localhost:3002/login", {
+        userData,
+      })
       
     } catch (err) {
       console.log(err);
     }
+    
   }
+
   return (
     <form id="form1">
       <h2>Login and register</h2>

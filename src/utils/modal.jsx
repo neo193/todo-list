@@ -38,6 +38,7 @@ const Modal = () => {
 
     try {
       const response=await axios.post("http://localhost:3002/new", { data });
+     
      if(response.status==201){
 
        setMyArray([...MyArray, { id: uid, taskName: value,tId:response.data.task._id}]);

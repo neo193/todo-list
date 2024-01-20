@@ -64,6 +64,7 @@ app.post('/login', async (req, res) => {
         } else {
             console.log("User not found. Please register.");
             res.status(404).json({ error: 'User not found. Please register.' });
+           
         }
     } catch (error) {
         console.error('Error during login:', error);
