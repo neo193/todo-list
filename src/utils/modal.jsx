@@ -4,7 +4,7 @@ import { useState } from "react";
 import "../utils/modal_des.css";
 import axios from "axios";
 import Task from "./task";
-import Login from "./login";
+
 
 const Modal = () => {
   const [Display, setDisplay] = useState(true);
@@ -71,7 +71,6 @@ const Modal = () => {
       {MyArray.map((item, index) => (
         <Task key={index} id={item.id} value={item.taskName} TaskId={item.tId}/>
       ))}
-      <Login />
     </div>
   );
 };

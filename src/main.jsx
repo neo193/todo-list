@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import Home from "./home.jsx";
+import App from "./App";
 
-ReactDOM.createRoot(document.querySelector("#root")).render(<Home />);
+ReactDOM.createRoot(document.querySelector("#root")).render(<App />);

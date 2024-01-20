@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -11,17 +12,21 @@ const Login = () => {
     };
     try {
       await axios.post("http://localhost:3002/register", { userData });
+      
     } catch (err) {
       console.log(err);
     }
   }
   async function handleLogin() {
+    window.location.href="/home"
     const userData = {
       username: username,
       password: password,
     };
     try {
       await axios.post("http://localhost:3002/login", { userData });
+      
+      
     } catch (err) {
       console.log(err);
     }
