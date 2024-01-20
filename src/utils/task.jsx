@@ -19,7 +19,7 @@ async function handleComplete(e){
     console.log(e.target.value)
     let completed="true"
     try{
-    await axios.put(`http://localhost:3002/completed/${props.id}`,{completed})
+    await axios.put(`http://localhost:3002/completed/${props.TaskId}`,{completed})
     }
     catch(err){
         console.log(err)
@@ -27,7 +27,7 @@ async function handleComplete(e){
 }
 async function handleDelete(){
     try{
-        await axios.delete(`http://localhost:3002/delete/${props.id}`)
+        await axios.delete(`http://localhost:3002/delete/${props.TaskId}`)
         }
         catch(err){
             console.log(err)

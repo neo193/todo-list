@@ -12,6 +12,7 @@ const Modal = () => {
   const [MyArray, setMyArray] = useState([]);
   const [uid, setUid] = useState("");
 
+
   async function handleDisplay() {
     try {
       const user_id = await axios.get("http://localhost:3002/getUid");
@@ -26,7 +27,7 @@ const Modal = () => {
     setDisplay(true);
     e.preventDefault();
 
-    setMyArray([...MyArray, { id: uid, taskName: value }]);
+    
 
     const data = {
       userId: uid,
@@ -36,7 +37,15 @@ const Modal = () => {
     };
 
     try {
-      await axios.post("http://localhost:3002/new", { data });
+      const response=await axios.post("http://localhost:3002/new", { data });
+     if(response.status==201){
+
+       setMyArray([...MyArray, { id: uid, taskName: value,tId:response.data.task._id}]);
+
+     }
+     else{
+      console.log(error)
+     }
     } catch (err) {
       console.log(err);
     }
@@ -60,7 +69,7 @@ const Modal = () => {
         </form>
       </div>
       {MyArray.map((item, index) => (
-        <Task key={index} id={item.id} value={item.taskName} />
+        <Task key={index} id={item.id} value={item.taskName} TaskId={item.tId}/>
       ))}
       <Login />
     </div>

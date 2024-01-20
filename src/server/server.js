@@ -88,6 +88,7 @@ app.post('/new', async (req, res) => {
 
         console.log('Task created:', newTask);
         res.status(201).json({ message: 'Task created successfully', task: newTask });
+    
     } catch (error) {
         console.error('Error creating task:', error);
         res.status(500).json({ error: 'Internal Server Error' });
