@@ -6,15 +6,14 @@ const taskDisplay= (props)=>{
   async function handleComplete(e) {
     console.log(e.target.value);
     try {
-      await axios.put(`http://localhost:3002/completed/${props.TaskId}`);
+      await axios.put(`http://localhost:3002/completed/${props.Tid}`);
     } catch (err) {
       console.log(err);
     }
   }
   async function handleDelete() {
-    console.log('helllo',props.TaskId)
     try {
-      await axios.delete(`http://localhost:3002/delete/${props.TaskId}`);
+      await axios.delete(`http://localhost:3002/delete/${props.Tid}`);
     } catch (err) {
       console.log(err);
     }

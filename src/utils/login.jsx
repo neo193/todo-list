@@ -37,6 +37,7 @@ const Login = () => {
       const response = await axios.post("http://localhost:3002/login", {
         userData,
       });
+      console.log(response);
       if (response.status === 200) {
         navigate("/home");
       }
@@ -53,8 +54,8 @@ const Login = () => {
         setLoginStatus(err.response.data.error);
         setDisplay(true);
         setTimeout(()=>{
-          setDisplay(false)
-         },3000)
+      setDisplay(false)
+     },3000)
         console.log("Status code:", err.response.status);
       } else if (err.request) {
         console.log("No response received:", err.request);

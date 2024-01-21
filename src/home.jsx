@@ -1,4 +1,4 @@
-// Home.jsx
+
 import React, { useEffect, useState } from 'react';
 import Modal from "../src/utils/modal.jsx";
 import axios from 'axios';
@@ -22,7 +22,21 @@ function Home() {
     usernameDisplay();
   }, []);
 
-  
+  useEffect(() => {
+    async function taskDisplay() {
+      try {
+        const response = await axios.get("http://localhost:3002/all");
+        const tasksWithIds = response.data.map(task => ({
+          taskName: task.taskName,
+          taskId: task._id
+        }));
+        setTaskname(tasksWithIds);
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      }
+    }
+    taskDisplay();
+  },);
 
   return (
     <div className="container">
@@ -50,11 +64,9 @@ function Home() {
         <div className="task-list">
           {taskname.map((data, index) => (
             <li key={index}>
-             
-              <TaskDisplay taskData={data}/>
+              <TaskDisplay taskData={data.taskName} Tid={data.taskId} />
             </li>
           ))}
-         
         </div>
       </div>
     </div>

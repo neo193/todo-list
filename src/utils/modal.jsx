@@ -3,7 +3,7 @@ import { useState } from "react";
 import TaskDisplay from "../taskDisplay";
 import "../utils/modal_des.css";
 import axios from "axios";
-//import Task from "./task";
+// import Task from "./task";
 
 
 const Modal = () => {
@@ -67,9 +67,9 @@ const Modal = () => {
           <button onClick={handleSubmit}>Done</button>
         </form>
       </div>
-      {MyArray.map((item, index) => (
-        <Task key={index} id={item.id} value={item.taskName} TaskId={item.tId}/>
-      ))}
+      {/* {MyArray.map((item, index) => (
+         <Task key={index} id={item.id} value={item.taskName} TaskId={item.tId}/>
+      ))} */}
     </div>
   );
 };
