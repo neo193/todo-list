@@ -1,22 +1,36 @@
-import React, { useState } from 'react';
-import Modal from "../src/utils/modal.jsx"
+// Home.jsx
+import React, { useEffect, useState } from 'react';
+import Modal from "../src/utils/modal.jsx";
 import axios from 'axios';
+import TaskDisplay from './taskDisplay.jsx';
 import './style.css';
 
 function Home() {
-  const [uname,setUname]=useState("")
-  async function usernameDisplay(){
-   const response= await axios.get("http://localhost:3002/getUname")
-   setUname(response.data)
-  }
-  usernameDisplay()
+  const [uname, setUname] = useState("");
+  const [taskname, setTaskname] = useState([]);
+
+  useEffect(() => {
+    async function usernameDisplay() {
+      try {
+        const response = await axios.get("http://localhost:3002/getUname");
+        setUname(response.data);
+      } catch (error) {
+        console.error("Error fetching username:", error);
+      }
+    }
+    
+    usernameDisplay();
+  }, []);
+
+  
+
   return (
     <div className="container">
       <div className="left-panel">
         <div className="greeting">
           <h2> Hello {uname}</h2>
-          <Modal/> 
-          <p>Welcome back to the world, we  missed You!</p>
+          <Modal /> 
+          <p>Welcome back to the world, we missed you!</p>
         </div>
         <div className="projects">
           <h3>Projects (3)</h3>
@@ -29,19 +43,20 @@ function Home() {
           <div className="project-item" style={{backgroundColor: "#FFC0CB"}}>
             <p>cod</p>
           </div>
-          
         </div>
       </div>
       <div className="right-panel">
         <h3>CALL OF DUTY</h3>
-        <ul className="task-list">
-          <li><input type="checkbox" /><span>Create initial layout for homepage</span></li>
-          <li><input type="checkbox" /><span>Fixing logo with transparent background</span></li>
-          <li><input type="checkbox" /><span>Creation initial style guide</span></li>
+        <div className="task-list">
+          {taskname.map((data, index) => (
+            <li key={index}>
+             
+              <TaskDisplay taskData={data}/>
+            </li>
+          ))}
          
-        </ul>
+        </div>
       </div>
-
     </div>
   );
 }
