@@ -15,15 +15,13 @@ mongoose.connect("mongodb+srv://todolistdbu1:todolist1234@todo-list-db.rn1dqor.m
     console.log("database connected")
 })
 
-// app.get('/all',async(req,res)=>{
-//    try{const data= await tasks.find()
-//    console.log(data)
-//    res.send(data)} 
-
-//     catch(err){
-//         console.log(err)
-//     }
-// })
+app.get('/all',async(req,res)=>{
+   try{const data= await tasks.find({userId:user_id})
+   res.json(data)}
+    catch(err){
+        console.log(err)
+    }
+})
 let user_id;
 let userName;
 app.post('/register', async (req, res) => {

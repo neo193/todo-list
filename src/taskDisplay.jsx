@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 
-const Task = (props) => {
-
+const taskDisplay= (props)=>{
+  
   async function handleComplete(e) {
     console.log(e.target.value);
     try {
@@ -12,16 +12,18 @@ const Task = (props) => {
     }
   }
   async function handleDelete() {
+    console.log('helllo',props.TaskId)
     try {
       await axios.delete(`http://localhost:3002/delete/${props.TaskId}`);
     } catch (err) {
       console.log(err);
     }
   }
-  return (
-    <div className="task-div">
-      <h1>{props.value}</h1>
-      <button
+
+return(
+    <div>
+    <h2>{props.taskData}</h2>
+    <button
         onClick={(e) => {
           handleComplete(e);
         }}
@@ -30,7 +32,6 @@ const Task = (props) => {
       </button>
       <button onClick={handleDelete}>delete</button>
     </div>
-  );
-};
-export default Task;
-
+)
+}
+export default taskDisplay

@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
-
+import TaskDisplay from "../taskDisplay";
 import "../utils/modal_des.css";
 import axios from "axios";
-import Task from "./task";
+//import Task from "./task";
 
 
 const Modal = () => {
@@ -11,8 +11,6 @@ const Modal = () => {
   const [value, setValue] = useState("");
   const [MyArray, setMyArray] = useState([]);
   const [uid, setUid] = useState("");
-
-
   async function handleDisplay() {
     try {
       const user_id = await axios.get("http://localhost:3002/getUid");
