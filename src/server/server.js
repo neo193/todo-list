@@ -25,6 +25,7 @@ mongoose.connect("mongodb+srv://todolistdbu1:todolist1234@todo-list-db.rn1dqor.m
 //     }
 // })
 let user_id;
+let userName;
 app.post('/register', async (req, res) => {
     try {
         const { username, password } = req.body.userData;
@@ -34,7 +35,6 @@ app.post('/register', async (req, res) => {
 
         // Save the user to the database
         await newUser.save();
-
         console.log('User registered:', newUser);
         res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
@@ -55,6 +55,7 @@ app.post('/login', async (req, res) => {
             if (user.password === password) {
                 user_id = user._id.toString();
                 console.log('User ID: ', user_id);
+                userName=uname
                 res.status(200).json({ message: 'Login successful', user_id });
             }
             else {
@@ -64,8 +65,8 @@ app.post('/login', async (req, res) => {
         } else {
             console.log("User not found. Please register.");
             res.status(404).json({ error: 'User not found. Please register.' });
-
         }
+        
     } catch (error) {
         console.error('Error during login:', error);
         res.status(500).json({ error: 'Internal Server Error' });
@@ -73,6 +74,9 @@ app.post('/login', async (req, res) => {
 });
 app.get('/getUid', (req, res) => {
     res.send(user_id)
+})
+app.get('/getUname',(req,res)=>{
+    res.send(userName)
 })
 app.post('/new', async (req, res) => {
     try {

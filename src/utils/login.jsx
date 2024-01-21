@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loginStatus, setLoginStatus] = useState("");
+  const [display, setDisplay] = useState(false);
   const navigate = useNavigate();
   async function handleRegister() {
     const userData = {
@@ -12,7 +14,16 @@ const Login = () => {
       password: password,
     };
     try {
-      await axios.post("http://localhost:3002/register", { userData });
+      const response = await axios.post("http://localhost:3002/register", {
+        userData,
+      });
+     setLoginStatus(response.data.message)
+     setDisplay(true)
+     setTimeout(()=>{
+      setDisplay(false)
+     },3000)
+     setUsername("")
+     setPassword("")
     } catch (err) {
       console.log(err);
     }
@@ -26,8 +37,7 @@ const Login = () => {
       const response = await axios.post("http://localhost:3002/login", {
         userData,
       });
-
-      if(response.status===200){
+      if (response.status === 200) {
         navigate("/home");
       }
       const { message, user_id } = response.data;
@@ -40,6 +50,11 @@ const Login = () => {
           "Server responded with error data:",
           err.response.data.error
         );
+        setLoginStatus(err.response.data.error);
+        setDisplay(true);
+        setTimeout(()=>{
+          setDisplay(false)
+         },3000)
         console.log("Status code:", err.response.status);
       } else if (err.request) {
         console.log("No response received:", err.request);
@@ -72,11 +87,23 @@ const Login = () => {
         required
       />
       <br />
-      <button onClick={handleRegister}>REGISTER</button>
-      <button onClick={(e)=>{
-        e.preventDefault()
-        handleLogin()
-        }}>LOGIN</button>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          handleRegister();
+        }}
+      >
+        REGISTER
+      </button>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          handleLogin();
+        }}
+      >
+        LOGIN
+      </button>
+      {display ? <h2>{loginStatus}</h2> : <h2></h2>}
     </form>
   );
 };

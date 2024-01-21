@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from "../src/utils/modal.jsx"
+import axios from 'axios';
 import './style.css';
 
 function Home() {
+  const [uname,setUname]=useState("")
+  async function usernameDisplay(){
+   const response= await axios.get("http://localhost:3002/getUname")
+   setUname(response.data)
+  }
+  usernameDisplay()
   return (
     <div className="container">
       <div className="left-panel">
         <div className="greeting">
-          <h2>Hi ALEX</h2>
+          <h2> Hello {uname}</h2>
           <Modal/> 
           <p>Welcome back to the world, we  missed You!</p>
         </div>
