@@ -21,8 +21,8 @@ const CountdownTimer = () => {
   
     return (
       <div>
-        <h1>Time left to finish the tasks :</h1>
-        <p>{formatTime(timeRemaining)}</p>
+        <h1>Time left to finish this task :</h1>
+        <h1>{formatTime(timeRemaining)}</h1>
       </div>
     );
   };
