@@ -50,15 +50,15 @@ function Home() {
         </div>
         <div className="projects">
           <h3>ACTIVE TASKS</h3><hr></hr>
-          <div className="project-item" style={{backgroundColor: "#7FFF00"}}>
+          <div className="project-item" style={{backgroundColor: "whitesmoke"}}>
             <h2>PUBG</h2>
             <CountdownTimer> </CountdownTimer> 
           </div>
-          <div className="project-item" style={{backgroundColor: "#800080"}}>
+          <div className="project-item" style={{backgroundColor: "gray"}}>
             <h2>VALORANT</h2>
             <CountdownTimer> </CountdownTimer> 
           </div>
-          <div className="project-item" style={{backgroundColor: "#FFC0CB"}}>
+          <div className="project-item" style={{backgroundColor: "whitesmoke"}}>
             <h2>COD</h2>
             <CountdownTimer> </CountdownTimer> 
           </div>
