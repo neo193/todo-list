@@ -65,7 +65,7 @@ function Home() {
         </div>
       </div>  
     </div><div className="right-panel">
-        <h3>TASK PENDING :</h3><hr></hr>
+        <h3>TASK TO-DO :</h3><hr></hr>
         <div className="task-list">
           {taskname.map((data, index) => (
             <li key={index}>

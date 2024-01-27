@@ -1,12 +1,13 @@
 .container {
     display: flex;
     justify-content: space-between;
+    background-color:whitesmoke;
   }
   
   .left-panel {
     width: 50%;
     padding: 20px;
-    background-color: #f2f2f2;
+    background-color: black;
   }
   
   .projects {
@@ -21,7 +22,7 @@
   .right-panel {
     width: 90%;
     padding: 90px;
-    background-color: #fff;
+    background-color: gray;
   }
   
   .task-list {
