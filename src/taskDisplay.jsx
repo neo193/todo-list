@@ -21,6 +21,7 @@ const taskDisplay= (props)=>{
 
 return(
     <div>
+      <div className="project-item" style={{backgroundColor: "brown"}}>
     <h2>{props.taskData}</h2>
     <button
         onClick={(e) => {
@@ -30,6 +31,7 @@ return(
         completed
       </button>
       <button onClick={handleDelete}>delete</button>
+      </div>
     </div>
 )
 }
