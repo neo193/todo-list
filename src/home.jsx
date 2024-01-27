@@ -40,12 +40,13 @@ function Home() {
   },);
 
   return (
+    <body className="container">
     <div className="container">
       <div className="left-panel">
         <div className="greeting">
           <h2> Hello {uname}</h2>
           <Modal /> 
-          <p>Welcome back to the world, we missed you!</p>
+          <p>Welcome back , we missed you!</p>
         </div>
         <div className="projects">
           <h3>ACTIVE TASKS</h3><hr></hr>
@@ -62,8 +63,8 @@ function Home() {
             <CountdownTimer> </CountdownTimer> 
           </div>
         </div>
-      </div>
-      <div className="right-panel">
+      </div>  
+    </div><div className="right-panel">
         <h3>TASK PENDING :</h3><hr></hr>
         <div className="task-list">
           {taskname.map((data, index) => (
@@ -73,7 +74,7 @@ function Home() {
           ))}
         </div>
       </div>
-    </div>
+    </body>
   );
 }
 

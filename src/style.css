@@ -4,7 +4,7 @@
   }
   
   .left-panel {
-    width: 40%;
+    width: 50%;
     padding: 20px;
     background-color: #f2f2f2;
   }
@@ -19,8 +19,8 @@
   }
   
   .right-panel {
-    width: 50%;
-    padding: 20px;
+    width: 90%;
+    padding: 90px;
     background-color: #fff;
   }
   
