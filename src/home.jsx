@@ -4,6 +4,7 @@ import Modal from "../src/utils/modal.jsx";
 import axios from 'axios';
 import TaskDisplay from './taskDisplay.jsx';
 import './style.css';
+import CountdownTimer from './timer.jsx';
 
 function Home() {
   const [uname, setUname] = useState("");
@@ -47,9 +48,9 @@ function Home() {
           <p>Welcome back to the world, we missed you!</p>
         </div>
         <div className="projects">
-          <h3>Projects (3)</h3>
-          <div className="project-item" style={{backgroundColor: "#7FFF00"}}>
-            <p>pubg</p>
+          <h3>ACTIVE TASKS</h3><hr></hr>
+          <div className="project-item" style={{backgroundColor: "#7FFF00"}}> 
+            <CountdownTimer> </CountdownTimer> 
           </div>
           <div className="project-item" style={{backgroundColor: "#800080"}}>
             <p>valorant</p>
@@ -60,7 +61,7 @@ function Home() {
         </div>
       </div>
       <div className="right-panel">
-        <h3>CALL OF DUTY</h3>
+        <h3>TASK PENDING :</h3><hr></hr>
         <div className="task-list">
           {taskname.map((data, index) => (
             <li key={index}>
