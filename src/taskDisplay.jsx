@@ -28,9 +28,9 @@ return(
           handleComplete(e);
         }}
       >
-        completed
-      </button>
-      <button onClick={handleDelete}>delete</button>
+        Active
+      </button> 
+              <button onClick={handleDelete}>delete</button>
       </div>
     </div>
 )
