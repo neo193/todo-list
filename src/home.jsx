@@ -44,7 +44,7 @@ function Home() {
     <div className="container">
       <div className="left-panel">
         <div className="greeting">
-          <h2> Hello {uname}</h2>
+        <h2 style={{ color: 'white' }}>Hello {uname}</h2>
           <Modal /> 
           <p>Welcome back , we missed you!</p>
         </div>

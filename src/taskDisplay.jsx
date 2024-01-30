@@ -22,7 +22,8 @@ const taskDisplay= (props)=>{
 return(
     <div>
       <div className="project-item" style={{backgroundColor: "black"}}>
-    <h2>{props.taskData}</h2>
+<h2 style={{ color: "white" }}>{props.taskData}</h2>
+
     <button
         onClick={(e) => {
           handleComplete(e);
